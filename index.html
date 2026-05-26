@@ -2,9 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cartão Digital - Carlos Augusto | Pedreiro Profissional</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Cartão Profissional | Pedreiro - Maracás BA</title>
   <style>
     * {
       margin: 0;
@@ -13,376 +12,398 @@
     }
 
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 24px;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      transition: all 0.2s;
     }
 
-    /* Container Principal */
+    /* --- ESTILO MARROM / TONS TERRROS (PADRÃO ATIVO) --- */
+    body.theme-brown {
+      background: linear-gradient(145deg, #8B5A2B 0%, #5D3A1A 100%);
+    }
+    body.theme-brown .card {
+      background: #FFF9F0;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5);
+    }
+    body.theme-brown .topo {
+      background: linear-gradient(125deg, #7B4A2A, #5A3A1E);
+    }
+    body.theme-brown .box-servicos {
+      background: #FCF7E8;
+      border: 1px solid #E7D5B5;
+    }
+    body.theme-brown .box-servicos h2 {
+      color: #6B3E1C;
+      border-left-color: #C17B3C;
+    }
+    body.theme-brown .grid-servicos li {
+      background: #F5EDDA;
+      border: 1px solid #E2C9A5;
+      color: #4F2D12;
+    }
+    body.theme-brown .regiao-destaque {
+      background: #F6EFE2;
+      border-left-color: #C17B3C;
+    }
+    body.theme-brown .btn.whatsapp {
+      background: #25D366;
+      box-shadow: 0 6px 14px rgba(37, 211, 102, 0.3);
+    }
+    body.theme-brown .btn.ligar {
+      background: #C46B2B;
+      box-shadow: 0 6px 14px rgba(196, 107, 43, 0.3);
+    }
+    body.theme-brown .btn.ligar:hover {
+      background: #A8551F;
+    }
+    body.theme-brown .rodape {
+      background: #F2E7D5;
+      border-top-color: #E5D0B4;
+      color: #5A3C24;
+    }
+    body.theme-brown .regiao-badge {
+      background: rgba(210, 160, 100, 0.25);
+      border-color: rgba(210, 160, 100, 0.6);
+      color: #FFEFCF;
+    }
+
+    /* --- ESTILO AZUL CLARO SUAVE --- */
+    body.theme-blue {
+      background: linear-gradient(135deg, #7BA7C9 0%, #4A7A9C 100%);
+    }
+    body.theme-blue .card {
+      background: #F5FBFE;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+    }
+    body.theme-blue .topo {
+      background: linear-gradient(125deg, #3D7EA6, #256282);
+    }
+    body.theme-blue .box-servicos {
+      background: #F0F8FF;
+      border: 1px solid #CEE3F0;
+    }
+    body.theme-blue .box-servicos h2 {
+      color: #2C6282;
+      border-left-color: #5B9BC7;
+    }
+    body.theme-blue .grid-servicos li {
+      background: #E9F2F9;
+      border: 1px solid #C9DFEE;
+      color: #1F5575;
+    }
+    body.theme-blue .regiao-destaque {
+      background: #EAF3FA;
+      border-left-color: #5B9BC7;
+    }
+    body.theme-blue .btn.whatsapp {
+      background: #25D366;
+      box-shadow: 0 6px 14px rgba(37, 211, 102, 0.3);
+    }
+    body.theme-blue .btn.ligar {
+      background: #4682B4;
+      box-shadow: 0 6px 14px rgba(70, 130, 180, 0.3);
+    }
+    body.theme-blue .btn.ligar:hover {
+      background: #356F9A;
+    }
+    body.theme-blue .rodape {
+      background: #EAF2F7;
+      border-top-color: #D5E4ED;
+      color: #2C5C7A;
+    }
+    body.theme-blue .regiao-badge {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #DCF2FF;
+    }
+
+    /* Estrutura comum */
     .card {
       width: 100%;
-      max-width: 440px;
-      background: #ffffff;
-      border-radius: 32px;
+      max-width: 400px;
+      border-radius: 36px;
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.25s ease, background 0.2s;
     }
-
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-4px);
     }
-
-    /* Header com Imagem de Perfil */
-    .profile-header {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      padding: 40px 20px 30px;
+    .topo {
+      color: white;
       text-align: center;
+      padding: 28px 20px 26px;
       position: relative;
     }
-
-    .profile-picture {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      border: 4px solid white;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      background: #fff;
-    }
-
-    .profile-picture img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Fallback caso a imagem não carregue */
-    .profile-picture .fallback-icon {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ff9800, #ff5722);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      color: white;
-    }
-
-    .profile-header h1 {
-      color: white;
-      font-size: 28px;
-      margin-bottom: 8px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    .profile-header .profession {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 16px;
-      font-weight: 500;
+    .regiao-badge {
       display: inline-block;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 5px 15px;
-      border-radius: 50px;
-      backdrop-filter: blur(10px);
-    }
-
-    /* Badge de Avaliação */
-    .rating-badge {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 15px;
-    }
-
-    .star {
-      color: #ffd700;
-      font-size: 20px;
-    }
-
-    .rating-text {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 14px;
-      margin-left: 5px;
-    }
-
-    /* Conteúdo Principal */
-    .content {
-      padding: 30px 25px;
-    }
-
-    /* Seção de Serviços */
-    .services {
-      margin-bottom: 30px;
-    }
-
-    .services h2 {
-      color: #2d3748;
-      font-size: 20px;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      padding: 5px 16px;
+      border-radius: 60px;
+      font-size: 0.75rem;
       font-weight: 600;
+      letter-spacing: 0.4px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(3px);
     }
-
-    .services h2::before {
-      content: "🛠️";
-      font-size: 22px;
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,240,0.9);
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+      background: #e9e2d4;
     }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+    .topo h1 {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
     }
-
-    .service-item {
-      background: #f7fafc;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      color: #2d3748;
+    .topo .profissao {
+      font-size: 0.9rem;
       font-weight: 500;
-      transition: all 0.3s ease;
-      text-align: center;
+      background: rgba(0, 0, 0, 0.22);
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 40px;
+      margin-bottom: 10px;
     }
-
-    .service-item:hover {
-      background: #ff9800;
-      color: white;
-      transform: translateX(5px);
+    .topo .chamada {
+      font-size: 0.8rem;
+      opacity: 0.92;
+      font-weight: 400;
     }
-
-    /* Contatos */
-    .contact {
-      margin: 25px 0;
+    .conteudo {
+      padding: 24px 22px 20px;
     }
-
-    .contact h2 {
-      color: #2d3748;
-      font-size: 20px;
-      margin-bottom: 15px;
+    .box-servicos {
+      border-radius: 28px;
+      padding: 18px 18px;
+      margin-bottom: 24px;
+    }
+    .box-servicos h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-left: 5px solid;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+    .grid-servicos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+    .grid-servicos li {
+      padding: 7px 16px;
+      border-radius: 40px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .regiao-destaque {
+      border-radius: 24px;
+      padding: 14px 18px;
+      margin-bottom: 28px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 600;
+      gap: 14px;
     }
-
-    .contact h2::before {
-      content: "📱";
-      font-size: 22px;
+    .icone-loc {
+      font-size: 32px;
+      background: rgba(0,0,0,0.04);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    .contact-buttons {
+    .texto-regiao p:first-child {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .texto-regiao p:last-child {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+    .acoes {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
-
-    .contact-btn {
+    .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 14px 20px;
-      border-radius: 14px;
+      gap: 10px;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    .btn-phone {
-      background: linear-gradient(135deg, #ff9800, #ff5722);
-      color: white;
-      box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .btn-email {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    }
-
-    /* Informações Adicionais */
-    .info-card {
-      background: linear-gradient(135deg, #f7fafc, #edf2f7);
-      border-radius: 16px;
-      padding: 15px;
-      margin: 20px 0;
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-    }
-
-    .info-item {
-      flex: 1;
-    }
-
-    .info-number {
-      font-size: 20px;
       font-weight: 700;
-      color: #ff5722;
+      padding: 14px 12px;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      cursor: pointer;
+      border: none;
     }
-
-    .info-label {
-      font-size: 12px;
-      color: #4a5568;
-      margin-top: 5px;
+    .btn:hover {
+      transform: scale(0.97);
+      filter: brightness(1.02);
     }
-
-    /* Footer */
-    .footer {
-      background: linear-gradient(135deg, #1a202c, #2d3748);
-      color: #e2e8f0;
+    .rodape {
       text-align: center;
-      padding: 20px;
-      font-size: 13px;
+      padding: 16px 18px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      border-top: 1px solid;
     }
-
-    .footer p {
-      margin: 5px 0;
-    }
-
-    .social-icons {
+    .theme-switch {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 60px;
+      padding: 8px 16px;
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 10px;
+      gap: 12px;
+      z-index: 999;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,240,0.3);
     }
-
-    .social-icons a {
-      color: #e2e8f0;
-      text-decoration: none;
-      font-size: 20px;
-      transition: color 0.3s ease;
+    .theme-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 40px;
+      transition: 0.2s;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-
-    .social-icons a:hover {
-      color: #ff9800;
+    .theme-btn.active {
+      background: rgba(255,215,140,0.9);
+      color: #2c2c2c;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-
-    /* Responsividade */
-    @media (max-width: 480px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .card {
-        max-width: 100%;
-      }
-      
-      .contact-btn {
-        padding: 12px 16px;
-        font-size: 14px;
-      }
+    .theme-btn span {
+      font-size: 0.75rem;
+    }
+    @media (max-width: 500px) {
+      .theme-switch { padding: 5px 12px; gap: 6px; bottom: 16px; right: 16px; }
+      .theme-btn { font-size: 1.2rem; padding: 4px 10px; }
+      .theme-btn span { display: none; }
     }
   </style>
 </head>
-<body>
-
+<body class="theme-brown">
   <div class="card">
-    <!-- Header com Foto de Perfil -->
-    <div class="profile-header">
-      <div class="profile-picture">
-        <!-- Substitua o src pela URL da sua imagem de perfil real -->
-        <img src="https://raw.githubusercontent.com/carlos46743/Pedreiro-/refs/heads/main/file_00000000fee871fb907897d37770ff63.png" 
-             alt="Foto de Perfil - Carlos Augusto"
-             onerror="this.onerror=null; this.parentElement.innerHTML='<div class=fallback-icon>👷</div>'">
-      </div>
+    <div class="topo">
+      <div class="regiao-badge">📍 MARACÁS - BAHIA</div>
+      <img class="avatar" src="https://images.unsplash.com/photo-1581299078017-35f129c2c3b5?w=400&auto=format" alt="Pedreiro Profissional" loading="lazy">
       <h1>Carlos Augusto</h1>
-      <div class="profession">👷 Pedreiro Profissional</div>
-      
-      <div class="rating-badge">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="rating-text">(4.9 • 128 avaliações)</span>
+      <div class="profissao">🛠️ PEDREIRO ESPECIALISTA</div>
+      <p class="chamada">Construção • Reformas • Acabamento de excelência</p>
+    </div>
+
+    <div class="conteudo">
+      <div class="box-servicos">
+        <h2>📋 Serviços com qualidade</h2>
+        <ul class="grid-servicos">
+          <li>Construção civil</li>
+          <li>Reboco & contrapiso</li>
+          <li>Piso & revestimento</li>
+          <li>Reformas completas</li>
+          <li>Acabamento premium</li>
+          <li>Alvenaria estrutural</li>
+        </ul>
+      </div>
+
+      <div class="regiao-destaque">
+        <div class="icone-loc">🏘️</div>
+        <div class="texto-regiao">
+          <p>📍 Atendimento prioritário em <strong>Maracás - BA</strong></p>
+          <p>✓ Região e entorno · Jaguaquara · Jequié · Itiruçu</p>
+        </div>
+      </div>
+
+      <div class="acoes">
+        <a class="btn whatsapp" href="https://wa.me/5573999999999?text=Olá%20Carlos%2C%20vim%20pelo%20cartão%20virtual%20e%20gostaria%20de%20um%20orçamento%20em%20Maracás." target="_blank">
+          📱 WhatsApp | Orçamento rápido
+        </a>
+        <a class="btn ligar" href="tel:+5573999999999">
+          📞 Ligar agora
+        </a>
       </div>
     </div>
 
-    <div class="content">
-      <!-- Seção de Serviços -->
-      <div class="services">
-        <h2>Serviços Especializados</h2>
-        <div class="services-grid">
-          <div class="service-item">🏗️ Construção Civil</div>
-          <div class="service-item">🔨 Reformas em Geral</div>
-          <div class="service-item">🧱 Pisos e Revestimentos</div>
-          <div class="service-item">✨ Acabamentos de Luxo</div>
-          <div class="service-item">🏠 Serviços Residenciais</div>
-          <div class="service-item">💧 Impermeabilização</div>
-        </div>
-      </div>
-
-      <!-- Informações Rápidas -->
-      <div class="info-card">
-        <div class="info-item">
-          <div class="info-number">10+</div>
-          <div class="info-label">Anos de Experiência</div>
-        </div>
-        <div class="info-item">
-          <div class="info-number">500+</div>
-          <div class="info-label">Projetos Concluídos</div>
-        </div>
-        <div class="info-item">
-          <div class="info-number">100%</div>
-          <div class="info-label">Clientes Satisfeitos</div>
-        </div>
-      </div>
-
-      <!-- Botões de Contato -->
-      <div class="contact">
-        <h2>Contato Rápido</h2>
-        <div class="contact-buttons">
-          <a class="contact-btn btn-phone" href="tel:+5573998425573">
-            📞 (73) 99842-5573
-          </a>
-          <a class="contact-btn btn-whatsapp" href="https://wa.me/5573998425573" target="_blank">
-            💬 WhatsApp (Clique aqui)
-          </a>
-          <a class="contact-btn btn-email" href="mailto:carlosaugusto4255@gmail.com">
-            📧 carlosaugusto4255@gmail.com
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer com Redes Sociais -->
-    <div class="footer">
-      <p>⭐ Qualidade • Compromisso • Serviço Bem Feito ⭐</p>
-      <p>🕐 Atendimento: Segunda a Sábado | 08h às 18h</p>
-      <div class="social-icons">
-        <a href="#" target="_blank">📘</a>
-        <a href="#" target="_blank">📸</a>
-        <a href="#" target="_blank">💼</a>
-      </div>
-      <p style="margin-top: 10px; font-size: 11px;">© 2024 Carlos Augusto - Todos os direitos reservados</p>
+    <div class="rodape">
+      🌟 Compromisso e pontualidade em <strong>Maracás - BA</strong> e cidades vizinhas.<br>
+      ✅ Experiência comprovada | Atendimento personalizado | Preço justo
     </div>
   </div>
 
+  <!-- Seletor flutuante de tema: MARROM e AZUL CLARO -->
+  <div class="theme-switch">
+    <button class="theme-btn" id="btn-brown" title="Tom terroso / Marrom">
+      🪵 <span>Marrom</span>
+    </button>
+    <button class="theme-btn" id="btn-blue" title="Azul claro suave">
+      💧 <span>Azul claro</span>
+    </button>
+  </div>
+
+  <script>
+    (function() {
+      const body = document.body;
+      const btnBrown = document.getElementById('btn-brown');
+      const btnBlue = document.getElementById('btn-blue');
+
+      // Função para trocar tema
+      function setTheme(theme) {
+        if(theme === 'brown') {
+          body.classList.remove('theme-blue');
+          body.classList.add('theme-brown');
+          // atualizar estilo ativo dos botões
+          btnBrown.classList.add('active');
+          btnBlue.classList.remove('active');
+          localStorage.setItem('pedreiroTheme', 'brown');
+        } 
+        else if(theme === 'blue') {
+          body.classList.remove('theme-brown');
+          body.classList.add('theme-blue');
+          btnBlue.classList.add('active');
+          btnBrown.classList.remove('active');
+          localStorage.setItem('pedreiroTheme', 'blue');
+        }
+      }
+
+      // Carregar tema salvo (prioridade: localStorage)
+      const savedTheme = localStorage.getItem('pedreiroTheme');
+      if(savedTheme === 'blue') {
+        setTheme('blue');
+      } else if(savedTheme === 'brown') {
+        setTheme('brown');
+      } else {
+        // padrão: marrom (tema inicial que já está na classe theme-brown)
+        btnBrown.classList.add('active');
+        btnBlue.classList.remove('active');
+      }
+
+      // Eventos dos botões
+      btnBrown.addEventListener('click', () => setTheme('brown'));
+      btnBlue.addEventListener('click', () => setTheme('blue'));
+    })();
+  </script>
 </body>
 </html>
