@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartão Digital - Carlos Augusto | Pedreiro Profissional</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Container Principal */
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Header com Imagem de Perfil */
+    .profile-header {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      padding: 40px 20px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 4px solid white;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      background: #fff;
+    }
+
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Fallback caso a imagem não carregue */
+    .profile-picture .fallback-icon {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+    }
+
+    .profile-header h1 {
+      color: white;
+      font-size: 28px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .profile-header .profession {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 5px 15px;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Badge de Avaliação */
+    .rating-badge {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .star {
+      color: #ffd700;
+      font-size: 20px;
+    }
+
+    .rating-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      margin-left: 5px;
+    }
+
+    /* Conteúdo Principal */
+    .content {
+      padding: 30px 25px;
+    }
+
+    /* Seção de Serviços */
+    .services {
+      margin-bottom: 30px;
+    }
+
+    .services h2 {
+      color: #2d3748;
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .services h2::before {
+      content: "🛠️";
+      font-size: 22px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .service-item {
+      background: #f7fafc;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #2d3748;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .service-item:hover {
+      background: #ff9800;
+      color: white;
+      transform: translateX(5px);
+    }
+
+    /* Contatos */
+    .contact {
+      margin: 25px 0;
+    }
+
+    .contact h2 {
+      color: #2d3748;
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .contact h2::before {
+      content: "📱";
+      font-size: 22px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-phone {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-email {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Informações Adicionais */
+    .info-card {
+      background: linear-gradient(135deg, #f7fafc, #edf2f7);
+      border-radius: 16px;
+      padding: 15px;
+      margin: 20px 0;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .info-item {
+      flex: 1;
+    }
+
+    .info-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ff5722;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: #4a5568;
+      margin-top: 5px;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, #1a202c, #2d3748);
+      color: #e2e8f0;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ff9800;
+    }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .card {
+        max-width: 100%;
+      }
+      
+      .contact-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Header com Foto de Perfil -->
+    <div class="profile-header">
+      <div class="profile-picture">
+        <!-- Substitua o src pela URL da sua imagem de perfil real -->
+        <img src="https://ui-avatars.com/api/?background=ff9800&color=fff&size=120&name=Carlos+Augusto&bold=true&length=2&font-size=60" 
+             alt="Foto de Perfil - Carlos Augusto"
+             onerror="this.onerror=null; this.parentElement.innerHTML='<div class=fallback-icon>👷</div>'">
+      </div>
+      <h1>Carlos Augusto</h1>
+      <div class="profession">👷 Pedreiro Profissional</div>
+      
+      <div class="rating-badge">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="rating-text">(4.9 • 128 avaliações)</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Seção de Serviços -->
+      <div class="services">
+        <h2>Serviços Especializados</h2>
+        <div class="services-grid">
+          <div class="service-item">🏗️ Construção Civil</div>
+          <div class="service-item">🔨 Reformas em Geral</div>
+          <div class="service-item">🧱 Pisos e Revestimentos</div>
+          <div class="service-item">✨ Acabamentos de Luxo</div>
+          <div class="service-item">🏠 Serviços Residenciais</div>
+          <div class="service-item">💧 Impermeabilização</div>
+        </div>
+      </div>
+
+      <!-- Informações Rápidas -->
+      <div class="info-card">
+        <div class="info-item">
+          <div class="info-number">10+</div>
+          <div class="info-label">Anos de Experiência</div>
+        </div>
+        <div class="info-item">
+          <div class="info-number">500+</div>
+          <div class="info-label">Projetos Concluídos</div>
+        </div>
+        <div class="info-item">
+          <div class="info-number">100%</div>
+          <div class="info-label">Clientes Satisfeitos</div>
+        </div>
+      </div>
+
+      <!-- Botões de Contato -->
+      <div class="contact">
+        <h2>Contato Rápido</h2>
+        <div class="contact-buttons">
+          <a class="contact-btn btn-phone" href="tel:+5573998425573">
+            📞 (73) 99842-5573
+          </a>
+          <a class="contact-btn btn-whatsapp" href="https://wa.me/5573998425573" target="_blank">
+            💬 WhatsApp (Clique aqui)
+          </a>
+          <a class="contact-btn btn-email" href="mailto:carlosaugusto4255@gmail.com">
+            📧 carlosaugusto4255@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer com Redes Sociais -->
+    <div class="footer">
+      <p>⭐ Qualidade • Compromisso • Serviço Bem Feito ⭐</p>
+      <p>🕐 Atendimento: Segunda a Sábado | 08h às 18h</p>
+      <div class="social-icons">
+        <a href="#" target="_blank">📘</a>
+        <a href="#" target="_blank">📸</a>
+        <a href="#" target="_blank">💼</a>
+      </div>
+      <p style="margin-top: 10px; font-size: 11px;">© 2024 Carlos Augusto - Todos os direitos reservados</p>
+    </div>
+  </div>
+
+</body>
+</html>
